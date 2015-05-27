@@ -8,9 +8,11 @@ package th.co.geniustree.configdatabase.model;
 import java.io.Serializable;
 import static java.util.Calendar.DATE;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import org.omg.CORBA.DATA_CONVERSION;
 
 /**
@@ -28,6 +30,10 @@ public class dt_Customer implements Serializable{
     private Integer age;
     private String sex;
     private String blood;
+    
+    
+    @OneToMany(mappedBy = "customerid")
+    private List<dt_playMent> playment;
 
     public Integer getPid() {
         return pid;
@@ -92,6 +98,16 @@ public class dt_Customer implements Serializable{
     public void setBlood(String blood) {
         this.blood = blood;
     }
+
+    public List<dt_playMent> getPlayment() {
+        return playment;
+    }
+
+    public void setPlayment(List<dt_playMent> playment) {
+        this.playment = playment;
+    }
+    
+    
 
     @Override
     public int hashCode() {
