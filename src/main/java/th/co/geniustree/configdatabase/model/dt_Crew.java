@@ -41,6 +41,9 @@ public class dt_Crew implements Serializable {
 
     @OneToMany(mappedBy = "crew")
     private List<dt_Ream> reams;
+    
+    @OneToMany(mappedBy = "crewid")
+    private List<dt_Crew> crews;
 
     public List<dt_Ream> getReams() {
         return reams;
