@@ -2,10 +2,12 @@ package th.co.geniustree.configdatabase.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class dt_Stock implements Serializable {
@@ -20,6 +22,18 @@ public class dt_Stock implements Serializable {
     private double balances;
     private Date expiration_date;
 
+     @OneToMany(mappedBy = "stock")
+     private List<dt_Ream> reams;
+
+    public List<dt_Ream> getReams() {
+        return reams;
+    }
+
+    public void setReams(List<dt_Ream> reams) {
+        this.reams = reams;
+    }
+     
+     
     @Override
     public int hashCode() {
         int hash = 5;

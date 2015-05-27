@@ -1,15 +1,17 @@
-
 package th.co.geniustree.configdatabase.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
-public class dt_Crew implements Serializable{
+public class dt_Crew implements Serializable {
+
     @Id
     private Integer id;
     private int pid;
@@ -29,7 +31,7 @@ public class dt_Crew implements Serializable{
     private String status_work;
     private String nationality;
     private String origin;
-    private String  phone;
+    private String phone;
     private String phone_mobile;
     private Date startwork;
     private Date endwork;
@@ -37,7 +39,19 @@ public class dt_Crew implements Serializable{
     private String linefigger;
     private String accountbank;
 
+    @OneToMany(mappedBy = "crew")
+    private List<dt_Ream> reams;
+
+    public List<dt_Ream> getReams() {
+        return reams;
+    }
+
+    public void setReams(List<dt_Ream> reams) {
+        this.reams = reams;
+    }
+   
     @Override
+
     public int hashCode() {
         int hash = 7;
         hash = 29 * hash + Objects.hashCode(this.id);
@@ -59,7 +73,6 @@ public class dt_Crew implements Serializable{
         return true;
     }
 
-    
     public Integer getId() {
         return id;
     }
@@ -67,8 +80,6 @@ public class dt_Crew implements Serializable{
     public void setId(Integer id) {
         this.id = id;
     }
-
-    
 
     public int getPid() {
         return pid;
@@ -261,5 +272,5 @@ public class dt_Crew implements Serializable{
     public void setAccountbank(String accountbank) {
         this.accountbank = accountbank;
     }
-    
+
 }

@@ -7,30 +7,40 @@ package th.co.geniustree.configdatabase.model;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class dt_Ream implements Serializable{
-    private String id_crew;
-    private String id_stock;
+    @EmbeddedId
+    private dt_ReamPK id;
     private String medicine;
     private String customer_id;
+    
+    @ManyToOne
+    @JoinColumn(
+            name = "crew_id",
+            insertable = false,
+            updatable = false
+    )
+    private dt_Crew crew;
+    
+    @ManyToOne
+    @JoinColumn(
+            name = "stock_id",
+            insertable = false,
+            updatable = false
+    )
+    private dt_Stock stock;
 
-    public String getId_crew() {
-        return id_crew;
+    public dt_ReamPK getId() {
+        return id;
     }
 
-    public void setId_crew(String id_crew) {
-        this.id_crew = id_crew;
-    }
-
-    public String getId_stock() {
-        return id_stock;
-    }
-
-    public void setId_stock(String id_stock) {
-        this.id_stock = id_stock;
+    public void setId(dt_ReamPK id) {
+        this.id = id;
     }
 
     public String getMedicine() {
@@ -49,11 +59,14 @@ public class dt_Ream implements Serializable{
         this.customer_id = customer_id;
     }
 
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 47 * hash + Objects.hashCode(this.id_crew);
-        hash = 47 * hash + Objects.hashCode(this.id_stock);
+        int hash = 5;
+        hash = 83 * hash + Objects.hashCode(this.id);
+        hash = 83 * hash + Objects.hashCode(this.medicine);
+        hash = 83 * hash + Objects.hashCode(this.customer_id);
+        
         return hash;
     }
 
@@ -66,13 +79,20 @@ public class dt_Ream implements Serializable{
             return false;
         }
         final dt_Ream other = (dt_Ream) obj;
-        if (!Objects.equals(this.id_crew, other.id_crew)) {
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.id_stock, other.id_stock)) {
+        if (!Objects.equals(this.medicine, other.medicine)) {
+            return false;
+        }
+        if (!Objects.equals(this.customer_id, other.customer_id)) {
             return false;
         }
         return true;
     }
+    
+    
+   
+    
     
 }
