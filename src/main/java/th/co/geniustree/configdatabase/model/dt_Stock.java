@@ -3,6 +3,7 @@ package th.co.geniustree.configdatabase.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -10,7 +11,7 @@ import javax.persistence.Id;
 public class dt_Stock implements Serializable {
 
     @Id
-    private String id;
+    private Integer id;
     private String type;
     private String name;
     private double costprice;
@@ -41,14 +42,16 @@ public class dt_Stock implements Serializable {
         return true;
     }
 
-    
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
+
+    
+   
 
     public String getType() {
         return type;

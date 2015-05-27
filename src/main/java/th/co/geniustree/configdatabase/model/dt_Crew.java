@@ -4,13 +4,14 @@ package th.co.geniustree.configdatabase.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
 public class dt_Crew implements Serializable{
     @Id
-    private String id;
+    private Integer id;
     private int pid;
     private String firstname_thai;
     private String firstname_eng;
@@ -59,13 +60,15 @@ public class dt_Crew implements Serializable{
     }
 
     
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
+
+    
 
     public int getPid() {
         return pid;
