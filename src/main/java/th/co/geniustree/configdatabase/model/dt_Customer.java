@@ -6,21 +6,20 @@
 package th.co.geniustree.configdatabase.model;
 
 import java.io.Serializable;
-import static java.util.Calendar.DATE;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import org.omg.CORBA.DATA_CONVERSION;
 
 /**
  *
  * @author Best
  */
 @Entity
-public class dt_Customer implements Serializable{
+public class dt_Customer implements Serializable {
+
     @Id
     private Integer pid;
     private String hn;
@@ -30,8 +29,7 @@ public class dt_Customer implements Serializable{
     private Integer age;
     private String sex;
     private String blood;
-    
-    
+
     @OneToMany(mappedBy = "customerid")
     private List<dt_playMent> playment;
 
@@ -106,8 +104,6 @@ public class dt_Customer implements Serializable{
     public void setPlayment(List<dt_playMent> playment) {
         this.playment = playment;
     }
-    
-    
 
     @Override
     public int hashCode() {
@@ -130,7 +126,5 @@ public class dt_Customer implements Serializable{
         }
         return true;
     }
-    
-    
-    
+
 }

@@ -8,15 +8,14 @@ package th.co.geniustree.configdatabase.model.pk;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Embeddable;
-import javax.persistence.Embedded;
 
 /**
  *
  * @author Best
  */
 @Embeddable
-public class playMentPk implements Serializable{
-    
+public class playMentPk implements Serializable {
+
     private Integer custumer_id;
     private Integer crew_id;
 
@@ -69,6 +68,5 @@ public class playMentPk implements Serializable{
         }
         return true;
     }
-    
-    
+
 }

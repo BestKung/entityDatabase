@@ -3,15 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package th.co.geniustree.entitydatabase.model;
+package th.co.geniustree.configdatabase.model;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import th.co.geniustree.configdatabase.model.pk.PrescriptionPk;
 
 /**
  *
@@ -19,31 +23,28 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name = "PRESCRIPTION")
-public class Prescription implements Serializable {
-    @Id
-    private String doctorId;
-    private String crewId;
-    @Temporal(javax.persistence.TemporalType.DATE)
+public class dt_Prescription implements Serializable {
+
+    @EmbeddedId
+    private PrescriptionPk id;
     private Date date;
     private Integer drugId;
     private Integer drugQuantity;
     private Double drugPrice;
     private String customer;
+    @ManyToOne
+    @Column(name = "doctor_id", insertable = false, updatable = false)
+    private Integer doctorId;
+    @ManyToOne
+    @Column(name = "crew_id", insertable = false, updatable = false)
+    private Integer crewId;
 
-    public String getDoctorId() {
-        return doctorId;
+    public PrescriptionPk getId() {
+        return id;
     }
 
-    public void setDoctorId(String doctorId) {
-        this.doctorId = doctorId;
-    }
-
-    public String getCrewId() {
-        return crewId;
-    }
-
-    public void setCrewId(String crewId) {
-        this.crewId = crewId;
+    public void setId(PrescriptionPk id) {
+        this.id = id;
     }
 
     public Date getDate() {
@@ -86,11 +87,26 @@ public class Prescription implements Serializable {
         this.customer = customer;
     }
 
+    public Integer getDoctorId() {
+        return doctorId;
+    }
+
+    public void setDoctorId(Integer doctorId) {
+        this.doctorId = doctorId;
+    }
+
+    public Integer getCrewId() {
+        return crewId;
+    }
+
+    public void setCrewId(Integer crewId) {
+        this.crewId = crewId;
+    }
+
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 67 * hash + Objects.hashCode(this.doctorId);
-        hash = 67 * hash + Objects.hashCode(this.crewId);
+        hash = 83 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -102,11 +118,8 @@ public class Prescription implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Prescription other = (Prescription) obj;
-        if (!Objects.equals(this.doctorId, other.doctorId)) {
-            return false;
-        }
-        if (!Objects.equals(this.crewId, other.crewId)) {
+        final dt_Prescription other = (dt_Prescription) obj;
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;

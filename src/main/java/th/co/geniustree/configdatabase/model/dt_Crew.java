@@ -41,7 +41,7 @@ public class dt_Crew implements Serializable {
 
     @OneToMany(mappedBy = "crew")
     private List<dt_Ream> reams;
-    
+
     @OneToMany(mappedBy = "crewid")
     private List<dt_Crew> crews;
 
@@ -52,7 +52,7 @@ public class dt_Crew implements Serializable {
     public void setReams(List<dt_Ream> reams) {
         this.reams = reams;
     }
-   
+
     @Override
 
     public int hashCode() {

@@ -13,12 +13,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class dt_Ream implements Serializable{
+public class dt_Ream implements Serializable {
+
     @EmbeddedId
     private dt_ReamPK id;
     private String medicine;
     private String customer_id;
-    
+
     @ManyToOne
     @JoinColumn(
             name = "crew_id",
@@ -26,7 +27,7 @@ public class dt_Ream implements Serializable{
             updatable = false
     )
     private dt_Crew crew;
-    
+
     @ManyToOne
     @JoinColumn(
             name = "stock_id",
@@ -59,14 +60,13 @@ public class dt_Ream implements Serializable{
         this.customer_id = customer_id;
     }
 
-
     @Override
     public int hashCode() {
         int hash = 5;
         hash = 83 * hash + Objects.hashCode(this.id);
         hash = 83 * hash + Objects.hashCode(this.medicine);
         hash = 83 * hash + Objects.hashCode(this.customer_id);
-        
+
         return hash;
     }
 
@@ -90,9 +90,5 @@ public class dt_Ream implements Serializable{
         }
         return true;
     }
-    
-    
-   
-    
-    
+
 }

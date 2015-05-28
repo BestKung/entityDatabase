@@ -19,16 +19,14 @@ import javax.persistence.Persistence;
  */
 @Entity
 
-public class dt_Operation implements Serializable{
-    
+public class dt_Operation implements Serializable {
+
     @Id
     private Integer id;
     private String symptom;
     private String drugid;
     private String drugname;
 
-    
-    
     public Integer getId() {
         return id;
     }
@@ -82,7 +80,7 @@ public class dt_Operation implements Serializable{
         }
         return true;
     }
-    
+
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("dental");
         EntityManager em = emf.createEntityManager();

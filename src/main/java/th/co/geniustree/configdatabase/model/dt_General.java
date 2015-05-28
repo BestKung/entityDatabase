@@ -1,6 +1,5 @@
 package th.co.geniustree.configdatabase.model;
 
-
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
@@ -12,13 +11,13 @@ import javax.persistence.Id;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Administrator
  */
-@Entity 
-public class dt_General implements Serializable{
+@Entity
+public class dt_General implements Serializable {
+
     @Id
     private Integer Pid;
     private String logo;

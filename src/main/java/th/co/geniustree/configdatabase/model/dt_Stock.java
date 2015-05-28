@@ -22,8 +22,8 @@ public class dt_Stock implements Serializable {
     private double balances;
     private Date expiration_date;
 
-     @OneToMany(mappedBy = "stock")
-     private List<dt_Ream> reams;
+    @OneToMany(mappedBy = "stock")
+    private List<dt_Ream> reams;
 
     public List<dt_Ream> getReams() {
         return reams;
@@ -32,8 +32,7 @@ public class dt_Stock implements Serializable {
     public void setReams(List<dt_Ream> reams) {
         this.reams = reams;
     }
-     
-     
+
     @Override
     public int hashCode() {
         int hash = 5;
@@ -63,9 +62,6 @@ public class dt_Stock implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-
-    
-   
 
     public String getType() {
         return type;
@@ -122,5 +118,5 @@ public class dt_Stock implements Serializable {
     public void setExpiration_date(Date expiration_date) {
         this.expiration_date = expiration_date;
     }
-    
+
 }

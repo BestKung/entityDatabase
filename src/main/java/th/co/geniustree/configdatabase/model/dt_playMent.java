@@ -19,19 +19,19 @@ import th.co.geniustree.configdatabase.model.pk.playMentPk;
  * @author Best
  */
 @Entity
-public class dt_playMent implements Serializable{
-  
+public class dt_playMent implements Serializable {
+
     @EmbeddedId
     private playMentPk id;
-    
+
     @ManyToOne
-    @JoinColumn(name = "crew_id" , insertable = false , updatable = false)
+    @JoinColumn(name = "crew_id", insertable = false, updatable = false)
     private dt_Crew crewid;
-    
+
     @ManyToOne
-    @JoinColumn(name = "custumer_id" , insertable = false , updatable = false)
+    @JoinColumn(name = "custumer_id", insertable = false, updatable = false)
     private dt_Customer customerid;
-    
+
     private Date date;
     private Double price;
 
@@ -107,8 +107,5 @@ public class dt_playMent implements Serializable{
         }
         return true;
     }
-    
-    
-    
-    
+
 }

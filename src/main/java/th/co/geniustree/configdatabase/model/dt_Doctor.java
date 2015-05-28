@@ -3,16 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package th.co.geniustree.entitydatabase.model;
+package th.co.geniustree.configdatabase.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
 
 /**
  *
@@ -20,16 +21,15 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name = "DOCTOR")
-public class Doctor implements Serializable {
+public class dt_Doctor implements Serializable {
+
     @Id
-    //@Column(name = "ID")
-    private String pid;
-    //@Column(name = "CERTIFICATION")
+    @Column(name = "doctor_id")
+    private Integer pid;
     private String cer;
     private String categotyPermit;
     private String nameTh;
     private String nameEn;
-    @Temporal(javax.persistence.TemporalType.DATE)
     private Date birthdate;
     private Integer age;
     private String gender;
@@ -40,12 +40,14 @@ public class Doctor implements Serializable {
     private String email;
     private String status;
     private String note;
+    @OneToMany(mappedBy = "doctor_id")
+    private List<dt_Prescription> prescriptions;
 
-    public String getPid() {
+    public Integer getPid() {
         return pid;
     }
 
-    public void setPid(String pid) {
+    public void setPid(Integer pid) {
         this.pid = pid;
     }
 
@@ -161,6 +163,14 @@ public class Doctor implements Serializable {
         this.note = note;
     }
 
+    public List<dt_Prescription> getPrescriptions() {
+        return prescriptions;
+    }
+
+    public void setPrescriptions(List<dt_Prescription> prescriptions) {
+        this.prescriptions = prescriptions;
+    }
+
     @Override
     public int hashCode() {
         int hash = 5;
@@ -176,7 +186,7 @@ public class Doctor implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Doctor other = (Doctor) obj;
+        final dt_Doctor other = (dt_Doctor) obj;
         if (!Objects.equals(this.pid, other.pid)) {
             return false;
         }
